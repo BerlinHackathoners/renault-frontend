@@ -4,11 +4,12 @@ import HEREMap, { Marker } from 'react-here-maps';
 export default class Map extends Component {
     render() {
         const center = { lat: 0, lng: 0 };
-    
         return (
             <HEREMap 
-                appId="{your app_id}"
-                appCode="{your app_code}"
+            appId= 'NsjvkdO6HINUXCU1xAwV'
+            appCode= 'rvodtjJNT8Ywk8Bnp-Hxbw'
+
+                zoom={14}
                 center={center}
                 zoom={14}
             >

@@ -6,6 +6,7 @@ import axios from 'axios'
 import { Button } from 'react-bootstrap';
 import {VoicePlayer, VoiceRecognition} from 'react-voice-components';
 import PlayVoice from './PlayVoice';
+import AwesomeMap from './AwesomeMap';
 
 class App extends Component {
 
@@ -67,6 +68,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div style={{height:300, width:300}}>
+      <AwesomeMap />
+      </div>
         <header className="App-header">
           <h1 className="App-title">Renault Challenge</h1>
         </header>
@@ -90,6 +94,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>{this.state.lastRecordedSentence}</code> and save to reload.
         </p>
+        
       </div>
     );
   }
