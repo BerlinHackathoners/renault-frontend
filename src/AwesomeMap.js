@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
-import HEREMap, { Marker } from 'react-here-maps';
+import { GoogleMap, Marker } from "react-google-maps"
+import { withGoogleMap,withScriptjs } from 'react-google-maps';
 
-export default class Map extends Component {
-    render() {
-        const center = { lat: 0, lng: 0 };
-        return (
-            <HEREMap 
-            appId= 'NsjvkdO6HINUXCU1xAwV'
-            appCode= 'rvodtjJNT8Ywk8Bnp-Hxbw'
+const AwesomeMap = withScriptjs(withGoogleMap(props => {
+    return <GoogleMap {...props} ref={props.onMapMounted}>{props.children}</GoogleMap>
+  }));
 
-                zoom={14}
-                center={center}
-                zoom={14}
-            >
-                <Marker {...center}>
-                    <div className="circle-marker"></div>
-                </Marker>
-            </HEREMap>
-        )
-    }
-}
+export default AwesomeMap

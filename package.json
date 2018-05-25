@@ -7,7 +7,7 @@
     "react": "^15.0.6",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^15.5.1",
-    "react-here-maps": "^0.4.0",
+    "react-google-maps": "^9.4.5",
     "react-scripts": "1.1.4",
     "react-voice-components": "^1.0.0"
   },
