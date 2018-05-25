@@ -17,6 +17,8 @@ class App extends Component {
     startRecording: false,
     stopRecording: false,
     lastRecordedSentence: "",
+    lat: 48.0391667,
+    long: 2.525
   };
 
   componentDidMount() {
@@ -66,6 +68,14 @@ class App extends Component {
     console.log("Ending recording")
   }
 
+  googleMapsClick = (e,v) => {
+console.log(e.latLng)
+this.setState({
+  lat: e.latLng.lat(),
+  lon: e.latLng.lng()
+})
+  }
+
   render() {
     return (
       <div className="App">
@@ -97,9 +107,11 @@ class App extends Component {
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
-                defaultZoom={3}
+                defaultZoom={10}
                 defaultCenter={{ lat: 48.0391667, lng: 2.525 }}
-
+                googleMapsClick={this.googleMapsClick}
+                lat={this.state.lat}
+                lon={this.state.lon}
         />
       </div>
     );
