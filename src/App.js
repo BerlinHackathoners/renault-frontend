@@ -77,6 +77,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    
     if (prevState.responseSentence !== this.state.responseSentence) {
       window.responsiveVoice.speak(this.state.responseSentence)
     }
@@ -112,7 +113,10 @@ console.log(document.getElementById("start").value)
           text={this.state.responseSentence}
           onEnd={() => this.onVoiceEnd()}
         /> : null}
-         <Button bsStyle="primary" onMouseDown={() => this.setState({ startRecording: true })} onMouseUp={() => this.setState({ stopRecording: true })}>Talk to computer</Button>
+         <Button bsStyle="primary" onMouseDown={() => {
+           var landmarks = document.getElementById("landmarks").innerHTML;
+           console.log(landmarks)
+           this.setState({ startRecording: true })}} onMouseUp={() => this.setState({ stopRecording: true })}>Talk to computer</Button>
         {this.state.startRecording && (
           <VoiceRecognition
             onStart={this.onStart}
