@@ -302,13 +302,25 @@ google.maps.LatLng.prototype.distanceFrom = function(newLatLng) {
   var lon1 = this.lng();
   var lat2 = newLatLng.lat();
   var lon2 = newLatLng.lng();
-  console.log(lat1, lon1)
+  console.log(lat1, lon1);
+  getLandmarks(lat1 + "," + lon1);
   var dLat = (lat2 - lat1) * Math.PI / 180;
   var dLon = (lon2 - lon1) * Math.PI / 180;
   var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = EarthRadiusMeters * c;
   return d;
+}
+
+function getLandmarks(gps) {
+	function UserAction() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "http://localhost:8080/landmarks?gps=" + gps, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send();
+        console.log(xhttp.responseText);
+        document.getElementById("landmarks").innerHTML = xhttp.responseText;
+    }
 }
 
 google.maps.LatLng.prototype.latRadians = function() {
