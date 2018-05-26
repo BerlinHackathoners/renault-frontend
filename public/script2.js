@@ -132,6 +132,9 @@ function calcRoute() {
           startLocation.address = legs[i].start_address;
           //   marker = createMarker(legs[i].start_location, "start", legs[i].start_address, "green");
         }
+
+        getLandmarks(lat1ng);
+
         endLocation.latlng = legs[i].end_location;
         endLocation.address = legs[i].end_address;
         var steps = legs[i].steps;
@@ -303,7 +306,6 @@ google.maps.LatLng.prototype.distanceFrom = function(newLatLng) {
   var lat2 = newLatLng.lat();
   var lon2 = newLatLng.lng();
   console.log(lat1, lon1);
-  getLandmarks(lat1 + "," + lon1);
   var dLat = (lat2 - lat1) * Math.PI / 180;
   var dLon = (lon2 - lon1) * Math.PI / 180;
   var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
