@@ -4,7 +4,7 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:8080'
 
 const KNOWLEDGE_API = BASE_URL.concat('/knowledge?query=')
-const RESPONSE_API = BASE_URL.concat('/get_intent?query=')
+const RESPONSE_API = BASE_URL.concat('/intent?query=')
 const GET_ROUTES_API = BASE_URL.concat('/get_routes?query=')
 const DESCRIPTION_API = BASE_URL.concat('/intent?query=')
 const TEST_API = 'http://10.125.1.12:8080/'

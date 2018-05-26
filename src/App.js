@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { get_api_call_test, get_landmarks_async, get_knowledge_async, get_description_async, get_response_async } from './IO/ApiCalls'
+import { get_routes_async, get_api_call_test, get_landmarks_async, get_knowledge_async, get_description_async, get_response_async } from './IO/ApiCalls'
 import axios from 'axios'
 import { Button } from 'react-bootstrap';
 import { VoicePlayer, VoiceRecognition } from 'react-voice-components';
 import PlayVoice from './PlayVoice';
 import AwesomeMap from './AwesomeMap';
+
 
 
 class App extends Component {
@@ -24,8 +25,8 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      lat:48,
-      long:2.525
+      lat: 48,
+      long: 2.525
     })
 
   }
@@ -75,10 +76,20 @@ class App extends Component {
     })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.responseSentence !== this.state.responseSentence) {
+      window.responsiveVoice.speak(this.state.responseSentence)
+    }
+  }
+
+  runSimulation() {
+    get_routes_async(this.state.lat, this.state.lon, )
+  }
+
   googleMapsClick = (e) => {
     const lat = e.latLng.lat()
     const lon = e.latLng.lng()
-    get_landmarks_async(48.8611111, 2.3358333333333334).then(res => {
+    get_landmarks_async(lat, lon).then(res => {
       this.setState({
         responseSentence: res.data,
         playVoice: true
@@ -91,16 +102,17 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Renault Challenge</h1>
         </header>
-        {this.state.playVoice ? <PlayVoice
+        {false ? <PlayVoice
           text={this.state.responseSentence}
           onEnd={() => this.onVoiceEnd()}
         /> : null}
-        <Button bsStyle="primary" onMouseDown={() => this.setState({ startRecording: true })} onMouseUp={() => this.setState({ stopRecording: true })}>start</Button>
+         <Button bsStyle="primary" onMouseDown={() => this.setState({ startRecording: true })} onMouseUp={() => this.setState({ stopRecording: true })}>Talk to computer</Button>
         {this.state.startRecording && (
           <VoiceRecognition
             onStart={this.onStart}
@@ -111,16 +123,16 @@ class App extends Component {
             stop={this.state.stopRecording}
           />
         )}
-        <p className="App-intro">
-          <code>{this.state.lastRecordedSentence}</code>
-        </p>
+        <div className="App-intro">
+          <code>{this.state.lastRecordedSentence ? this.state.lastRecordedSentence : null}</code>
+        </div>
         <AwesomeMap
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           defaultZoom={10}
-          defaultCenter={{ lat: 48.0391667, lng: 2.525 }}
+          defaultCenter={{ lat: this.state.lat ? this.state.lat : 48.0391667, lng: this.state.lon ? this.state.lon : 2.525 }}
           googleMapsClick={this.googleMapsClick}
           lat={this.state.lat}
           lon={this.state.lon}
