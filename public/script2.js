@@ -319,6 +319,7 @@ function getLandmarks(gps) {
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
         console.log(xhttp.responseText);
+        document.getElementById("content").innerHTML = xhttp.responseText;
     }
 }
 
