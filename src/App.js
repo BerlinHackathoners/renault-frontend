@@ -126,17 +126,7 @@ class App extends Component {
         <div className="App-intro">
           <code>{this.state.lastRecordedSentence ? this.state.lastRecordedSentence : null}</code>
         </div>
-        <AwesomeMap
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          defaultZoom={10}
-          defaultCenter={{ lat: this.state.lat ? this.state.lat : 48.0391667, lng: this.state.lon ? this.state.lon : 2.525 }}
-          googleMapsClick={this.googleMapsClick}
-          lat={this.state.lat}
-          lon={this.state.lon}
-        />
+
       </div>
     );
   }
