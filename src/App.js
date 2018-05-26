@@ -19,17 +19,11 @@ class App extends Component {
     stopRecording: false,
     lastRecordedSentence: "",
     responseSentence: "",
-    lat: 48.0391667,
-    long: 2.525
+    lat: 48.865800139090645,
+    long: 1.5220305204940814
   };
 
-  componentDidMount() {
-    this.setState({
-      lat: 48,
-      long: 2.525
-    })
 
-  }
 
   handleKnowledgeClick() {
     console.log("knowledge click")
@@ -133,8 +127,8 @@ class App extends Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
-          defaultZoom={10}
-          defaultCenter={{ lat: this.state.lat ? this.state.lat : 48.0391667, lng: this.state.lon ? this.state.lon : 2.525 }}
+          defaultZoom={15}
+          defaultCenter={{ lat: this.state.lat ? this.state.lat : 48.8611111, lng: this.state.lon ? this.state.lon : 2.3358333333333334 }}
           googleMapsClick={this.googleMapsClick}
           lat={this.state.lat}
           lon={this.state.lon}
