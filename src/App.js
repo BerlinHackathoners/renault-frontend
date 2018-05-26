@@ -107,13 +107,13 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Renault Challenge</h1>
+          <h1 className="App-title">Renault Challenge - Renault Guide by The Berliners</h1>
         </header>
         {false ? <PlayVoice
           text={this.state.responseSentence}
           onEnd={() => this.onVoiceEnd()}
         /> : null}
-         <Button bsStyle="primary" onMouseDown={() => this.setState({ startRecording: true })} onMouseUp={() => this.setState({ stopRecording: true })}>Talk to computer</Button>
+         <Button bsStyle="primary" onMouseDown={() => this.setState({ startRecording: true })} onMouseUp={() => this.setState({ stopRecording: true })}>Talk to the car</Button>
         {this.state.startRecording && (
           <VoiceRecognition
             onStart={this.onStart}
