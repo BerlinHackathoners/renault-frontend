@@ -90,6 +90,7 @@ class App extends Component {
     const lat = e.latLng.lat()
     const lon = e.latLng.lng()
     get_landmarks_async(lat, lon).then(res => {
+      console.log("Landmarks data: ", res.data)
       this.setState({
         responseSentence: res.data,
         playVoice: true
