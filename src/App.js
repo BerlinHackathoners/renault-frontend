@@ -89,6 +89,7 @@ class App extends Component {
   googleMapsClick = (e) => {
     const lat = e.latLng.lat()
     const lon = e.latLng.lng()
+    console.log(lat, lon)
     get_landmarks_async(lat, lon).then(res => {
       console.log("Landmarks data: ", res.data)
       this.setState({
