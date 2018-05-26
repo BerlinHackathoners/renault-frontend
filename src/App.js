@@ -102,7 +102,7 @@ class App extends Component {
   }
 
   render() {
-
+console.log(document.getElementById("start").value)
     return (
       <div className="App">
         <header className="App-header">
